@@ -17,6 +17,7 @@ Route::prefix('')->group(function () {
         Route::get('unit-login', 'index')->name('unit.login');
         Route::get('supply-management', 'supply_management')->name('supply.management');
         Route::get('reports', 'reports')->name('reports');
+        Route::get('reports/{slug}', 'blog_details')->name('blog.details');
         Route::get('training-resources', 'training_resources')->name('training.resources');
         Route::get('contact', 'contact')->name('contact');
         Route::post('unit-login', 'unit_login')->name('process.unit.login');

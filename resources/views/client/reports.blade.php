@@ -17,16 +17,17 @@
 
         <div class="container mt-60">
             <div class="row align-items-center">
-                <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
-                    <div class="popular-course rounded-md shadow position-relative overflow-hidden">
-                        <img src="{{ asset('client/images/maps/ammunition-status.webp') }}" class="img-fluid" alt="">
-                        <div class="content p-3 text-center">
-                            <h5 class="mt-2"><a href="javascript:void(0)" class="title text-dark">Educational
-                                    Communication</a></h5>
-                            <p class="text-muted">August 4, 2025</p>
+                @foreach ($reports as $report)
+                    <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+                        <div class="popular-course rounded-md shadow position-relative overflow-hidden">
+                            <img src="{{ asset('client/images/maps/' .  $report['image']) }}" class="img-fluid" alt="{{ $report['title'] }}">
+                            <div class="content p-3 text-center">
+                                <h5 class="mt-2"><a href="{{ route('blog.details', ['slug' =>  $report['slug']]) }}" class="title text-dark">{{ $report['title'] }}</a></h5>
+                                <p class="text-muted">{{ date('d M, Y') }}</p>
+                            </div>
                         </div>
-                    </div>
-                </div><!--end col-->
+                    </div><!--end col-->
+                @endforeach
 
             </div><!--end row-->
         </div><!--end container-->

@@ -3,7 +3,7 @@
 if (!function_exists('getBlogPosts')) {
     function getBlogPosts()
     {
-        $filePath = storage_path('app/blog_posts.json');
+        $filePath = storage_path('app/blog-posts.json');
 
         if (!file_exists($filePath)) {
             return [];
@@ -14,17 +14,33 @@ if (!function_exists('getBlogPosts')) {
     }
 }
 
-if (!function_exists('getBlogPostById')) {
-    function getBlogPostById($id)
+if (!function_exists('getBlogPostBySlug')) {
+    function getBlogPostBySlug($slug)
     {
         $posts = getBlogPosts();
 
         foreach ($posts as $post) {
-            if ($post['id'] == $id) {
+            if ($post['slug'] == $slug) {
                 return $post;
             }
         }
 
         return null;
+    }
+}
+
+if (!function_exists('getBlogPostsByCategory')) {
+    function getBlogPostsByCategory($category)
+    {
+        $posts = getBlogPosts();
+        $filtered = [];
+
+        foreach ($posts as $post) {
+            if (isset($post['category']) && strtolower($post['category']) === strtolower($category)) {
+                $filtered[] = $post;
+            }
+        }
+
+        return $filtered;
     }
 }

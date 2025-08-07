@@ -20,7 +20,14 @@ class SupportSytemController extends Controller
     }
     public function reports()
     {
-        return view('client.reports');
+        $reports = getBlogPostsByCategory('reports');
+        return view('client.reports', compact('reports'));
+    }
+    public function blog_details($slug)
+    {
+        $report = getBlogPostBySlug($slug);
+
+        return view('client.blog-details', compact('report'));
     }
     public function training_resources()
     {
