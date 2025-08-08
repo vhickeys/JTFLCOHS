@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\SupportSystem\LogBaseReport;
 use Illuminate\Support\Facades\Validator;
 use App\Models\SupportSystem\UnitNomenclature;
 
@@ -16,13 +17,24 @@ class SupportSytemController extends Controller
 
     public function supply_management()
     {
-        return view('client.supply-management');
+        $log_bases = getLogBases();
+        $supplies = getBlogPostsByCategory('operations');
+        return view('client.supply-management', compact('log_bases', 'supplies'));
     }
     public function reports()
     {
         $reports = getBlogPostsByCategory('reports');
-        return view('client.reports', compact('reports'));
+        $log_bases = getLogBases();
+        return view('client.reports', compact('reports', 'log_bases'));
     }
+    public function base_report($base)
+    {
+        $base_details = getLogBaseBySlug($base);
+        $log_base = $base_details['name'];
+        $base_reports = LogBaseReport::where('log_base', $log_base)->paginate(10);
+        return view('client.log-base-report', compact('base_reports', 'base_details'));
+    }
+
     public function blog_details($slug)
     {
         $report = getBlogPostBySlug($slug);
@@ -31,7 +43,8 @@ class SupportSytemController extends Controller
     }
     public function training_resources()
     {
-        return view('client.training-resources');
+        $guides = getBlogPostsByCategory('guides');
+        return view('client.training-resources', compact('guides'));
     }
     public function contact()
     {
@@ -142,7 +155,6 @@ class SupportSytemController extends Controller
 
         return view('client.trsm-result', compact('status', 'validated'));
     }
-
     public function logout()
     {
         session()->flush();

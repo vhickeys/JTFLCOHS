@@ -28,6 +28,7 @@ Route::prefix('')->group(function () {
         Route::middleware(EnsureUnitIsLoggedIn::class)->group(function () {
             Route::get('supply-management', 'supply_management')->name('supply.management');
             Route::get('reports', 'reports')->name('reports');
+            Route::get('reports/base-report/{base}', 'base_report')->name('base.report');
             Route::get('logout', 'logout')->name('logout');
         });
     });

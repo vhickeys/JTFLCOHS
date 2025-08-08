@@ -92,7 +92,7 @@
                     <div class="shadow rounded p-4">
                         <h5 class="mb-0">Get In Touch !</h5>
                         <div class="custom-form mt-4 pt-2">
-                            <form method="post" name="myForm" onsubmit="return validateForm()">
+                            <form method="post" action="javascript:void(0)">
                                 <p id="error-msg"></p>
                                 <div id="simple-msg"></div>
                                 <div class="row">

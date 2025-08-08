@@ -15,21 +15,22 @@
             </div><!--end col-->
         </div><!--end row-->
 
-        <div class="container mt-60">
-            <div class="row align-items-center">
+        <div class="row align-items-center">
+            @foreach ($guides as $guide)
                 <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
                     <div class="popular-course rounded-md shadow position-relative overflow-hidden">
-                        <img src="{{ asset('client/images/maps/ammunition-status.webp') }}" class="img-fluid" alt="">
+                        <img src="{{ asset('client/images/maps/placeholder.webp') }}" class="img-fluid"
+                            alt="{{ $guide['title'] }}">
                         <div class="content p-3 text-center">
-                            <h5 class="mt-2"><a href="javascript:void(0)" class="title text-dark">Educational
-                                    Communication</a></h5>
-                            <p class="text-muted">August 4, 2025</p>
+                            <h5 class="mt-2"><a href="{{ route('blog.details', ['slug' => $guide['slug']]) }}"
+                                    class="title text-dark">{{ $guide['title'] }}</a></h5>
+                            <p class="text-muted">{{ date('d M, Y') }}</p>
                         </div>
                     </div>
                 </div><!--end col-->
+            @endforeach
 
-            </div><!--end row-->
-        </div><!--end container-->
+        </div><!--end row-->
     </div><!--end container-->
 
     <!-- Maps & Image Overview -->
@@ -157,34 +158,5 @@
         </div><!--end container-->
     </section><!--end section-->
     <!-- FAQ Start -->
-
-    <div class="container mt-60 mb-5">
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <div class="section-title text-center mb-4 pb-2">
-                    <h2 class="">Optimizing Logistics Management</h2>
-                    <p class="text-muted mx-auto para-desc mb-0">Strategic insights for efficient resource management.</p>
-                </div>
-            </div><!--end col-->
-        </div><!--end row-->
-
-        <div class="container mt-60">
-            <div class="row align-items-center">
-                <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
-                    <div class="popular-course rounded-md shadow position-relative overflow-hidden">
-                        <img src="{{ asset('client/images/maps/ammunition-status.webp') }}" class="img-fluid" alt="">
-                        <div class="content p-3 text-center">
-                            <h5 class="mt-2"><a href="javascript:void(0)" class="title text-dark">LOG BASE 1 in Warri
-                                    Performance Review</a></h5>
-                            <p class="text-muted">LOG BASE 1 in Warri has demonstrated commendable logistics management,
-                                achieving a 95% supply readiness rate. Continuous monitoring is recommended to maintain this
-                                level of efficiency.</p>
-                        </div>
-                    </div>
-                </div><!--end col-->
-
-            </div><!--end row-->
-        </div><!--end container-->
-    </div><!--end container-->
 
 @endsection

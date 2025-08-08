@@ -9,6 +9,7 @@ class HomepageController extends Controller
 {
     public function index()
     {
-        return view('client.index');
+        $reports = getBlogPostsByCategory('reports');
+        return view('client.index', compact('reports'));
     }
 }

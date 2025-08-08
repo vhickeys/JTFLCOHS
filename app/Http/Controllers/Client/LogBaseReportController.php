@@ -12,6 +12,7 @@ class LogBaseReportController extends Controller
     {
         $validated = $request->validate([
             'log_base'           => 'required|string|max:255',
+            'reporting_officer'           => 'required|string|max:255',
             'ration_status'      => 'required|string|max:255',
             'pol_status'         => 'required|string|max:255',
             'ammunition_status'  => 'required|string|max:255',
@@ -24,4 +25,8 @@ class LogBaseReportController extends Controller
         return redirect()->route('homepage')
             ->with('success', 'Log Base Report submitted successfully.');
     }
+
+    // public function getLogBases() {
+
+    // }
 }

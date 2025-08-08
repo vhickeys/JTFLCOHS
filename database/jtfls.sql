@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 19, 2025 at 10:20 PM
+-- Generation Time: Aug 08, 2025 at 05:42 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `nafogs`
+-- Database: `jtfls`
 --
 
 -- --------------------------------------------------------
@@ -99,6 +99,34 @@ CREATE TABLE `job_batches` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `log_base_reports`
+--
+
+CREATE TABLE `log_base_reports` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `log_base` varchar(255) NOT NULL,
+  `reporting_officer` varchar(255) NOT NULL,
+  `ration_status` varchar(255) NOT NULL,
+  `pol_status` varchar(255) NOT NULL,
+  `ammunition_status` varchar(255) NOT NULL,
+  `medical_sup_status` varchar(255) NOT NULL,
+  `comments` longtext NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `log_base_reports`
+--
+
+INSERT INTO `log_base_reports` (`id`, `log_base`, `reporting_officer`, `ration_status`, `pol_status`, `ammunition_status`, `medical_sup_status`, `comments`, `created_at`, `updated_at`) VALUES
+(1, 'LOG BASE 1 - (Warri)', 'Sgt. Amos Joel', 'Low', 'Low', 'Low', 'Low', 'We Need Help Sir!', '2025-08-08 09:42:50', '2025-08-08 09:42:50'),
+(2, 'LOG BASE 3 - (Port Harcourt)', 'Cpt. Moses Danjuma', 'Medium', 'Low', 'Critically Low', 'Critically Low', 'We need more aid sir!!!', '2025-08-08 09:44:26', '2025-08-08 09:44:26'),
+(3, 'LOG BASE 1 - (Warri)', 'Captail Victor Osaronwafor', 'Low', 'Very High', 'Low', 'Critically Low', 'We need immediate support sir', '2025-08-08 12:09:39', '2025-08-08 12:09:39');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -116,7 +144,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '0001_01_01_000000_create_users_table', 1),
 (2, '0001_01_01_000001_create_cache_table', 1),
 (3, '0001_01_01_000002_create_jobs_table', 1),
-(4, '2025_07_19_152555_create_unit_nomenclature_table', 2);
+(4, '2025_07_19_152555_create_unit_nomenclature_table', 1),
+(5, '2025_08_08_101634_create_log_base_reports_table', 2);
 
 -- --------------------------------------------------------
 
@@ -150,7 +179,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('7KgrBbWFhn8lBiZZx6tDJFSPH3K2Va0VzG6VJHe7', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'YTozOntzOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czo0NjoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL3VuaXQtbG9naW4/bW9kZWw9YXVmb2dlbSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NjoiX3Rva2VuIjtzOjQwOiJGbVFZWUdOTmo1ckFmWUZqV0VKY2w0ZW9la2d5a2NXbGRPR1ZrdEJMIjt9', 1752955435);
+('tiNjGKubEaOLsJ5bNfKOPZxXgukMHaTJrsVsgJkS', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'YTo2OntzOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czoyOToiaHR0cDovLzEyNy4wLjAuMTo4MDAwL3JlcG9ydHMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjY6Il90b2tlbiI7czo0MDoiZ0xSZDd1UVBwMWcxWDJOaXhkZTlJazVjOExMZmk5dDhja0tVdW1WViI7czoxNDoidW5pdF9sb2dnZWRfaW4iO2I6MTtzOjEwOiJ1bml0X21vZGVsIjtOO3M6OToidW5pdF9uYW1lIjtzOjEwOiJqdGZsc18yMDI1Ijt9', 1754667653);
 
 -- --------------------------------------------------------
 
@@ -171,58 +200,7 @@ CREATE TABLE `unit_nomenclature` (
 --
 
 INSERT INTO `unit_nomenclature` (`id`, `unit`, `status`, `created_at`, `updated_at`) VALUES
-(1, '7th Batallion', 0, '2025-07-19 15:34:28', '2025-07-19 15:34:28'),
-(2, '3rd Batallion', 0, '2025-07-19 15:34:28', '2025-07-19 15:34:28'),
-(3, 'Alpha Company', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(4, 'Bravo Company', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(5, 'Charlie Company', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(6, 'Delta Company', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(7, 'Echo Company', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(8, 'Foxtrot Company', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(9, 'Golf Company', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(10, 'Hotel Company', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(11, 'India Company', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(12, 'Juliet Company', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(13, '101st Airborne', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(14, '82nd Airborne', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(15, '1st Armored Division', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(16, '2nd Infantry Division', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(17, '3rd Cavalry Regiment', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(18, '75th Ranger Regiment', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(19, 'Special Forces Group A', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(20, 'Special Forces Group B', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(21, 'Field Artillery Battalion', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(22, 'Combat Support Team', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(23, 'Tactical Recon Unit', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(24, 'Logistics Support Unit', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(25, 'Military Intelligence Unit', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(26, 'Engineering Corps', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(27, 'Signal Corps', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(28, 'Medical Corps', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(29, 'Aviation Battalion', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(30, 'Air Defense Artillery', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(31, 'Rapid Deployment Force', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(32, 'Mechanized Infantry', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(33, 'Armored Recon Squad', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(34, 'Heavy Weapons Company', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(35, 'Sniper Platoon', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(36, 'Mortar Platoon', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(37, 'Anti-Tank Platoon', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(38, 'Pathfinder Unit', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(39, 'Paratrooper Division', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(40, 'Urban Warfare Unit', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(41, 'Jungle Warfare Unit', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(42, 'Desert Combat Unit', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(43, 'Arctic Survival Unit', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(44, 'Amphibious Assault Team', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(45, 'Combat Engineer Team', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(46, 'Chemical Defense Unit', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(47, 'Electronic Warfare Team', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(48, 'PsyOps Division', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(49, 'Drone Recon Unit', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(50, 'Cyber Operations Unit', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(51, 'K-9 Unit', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26'),
-(52, 'Military Police Squad', 0, '2025-07-19 20:12:26', '2025-07-19 20:12:26');
+(1, 'jtfls_2025', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -278,6 +256,12 @@ ALTER TABLE `job_batches`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `log_base_reports`
+--
+ALTER TABLE `log_base_reports`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -327,16 +311,22 @@ ALTER TABLE `jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `log_base_reports`
+--
+ALTER TABLE `log_base_reports`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `unit_nomenclature`
 --
 ALTER TABLE `unit_nomenclature`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('log_base_reports', function (Blueprint $table) {
             $table->id();
             $table->string('log_base');
+            $table->string('reporting_officer');
             $table->string('ration_status');
             $table->string('pol_status');
             $table->string('ammunition_status');

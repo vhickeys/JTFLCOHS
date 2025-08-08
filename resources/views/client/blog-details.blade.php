@@ -1,6 +1,6 @@
 @extends('layouts.client')
 
-@section('title', 'Blog')
+@section('title', $report['title'])
 
 @section('content')
 

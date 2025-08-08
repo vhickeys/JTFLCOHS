@@ -102,12 +102,22 @@
                                                 <option value="" selected disabled>-- Select LOG BASE --</option>
                                                 <option value="LOG BASE 1 - (Warri)">LOG BASE 1 - (Warri)</option>
                                                 <option value="LOG BASE 2 - (Yenagoa)">LOG BASE 2 - (Yenagoa)</option>
-                                                <option value="LOG BASE 3 -  (Port Harcourt)">LOG BASE 3 - (Port Harcourt)
+                                                <option value="LOG BASE 3 - (Port Harcourt)">LOG BASE 3 - (Port Harcourt)
                                                 </option>
                                                 <option value="LOG BASE 4 - (Calabar)">LOG BASE 4 - (Calabar)</option>
                                             </select>
                                         </div>
                                     </div>
+
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Reporting Officer <span
+                                                    class="text-danger">*</span></label>
+                                            <input name="reporting_officer" id="reporting_officer" type="text"
+                                                class="form-control" placeholder="Enter your name">
+
+                                        </div>
+                                    </div><!--end col-->
 
                                     <div class="col-md-6">
                                         <div class="mb-3">
@@ -163,7 +173,8 @@
                                                     class="text-danger">*</span></label>
                                             <select class="form-select" name="medical_sup_status"
                                                 aria-label="Default select example">
-                                                <option value="" selected disabled>-- Select Medical Supplies Status --</option>
+                                                <option value="" selected disabled>-- Select Medical Supplies Status --
+                                                </option>
                                                 <option value="Very High">Very High</option>
                                                 <option value="High">High</option>
                                                 <option value="Medium">Medium</option>
@@ -176,7 +187,8 @@
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label class="form-label">Comments <span class="text-danger">*</span></label>
-                                            <textarea name="comments" id="comments" rows="4" class="form-control" placeholder="Leave a Message :"></textarea>
+                                            <textarea name="comments" id="comments" rows="4" class="form-control"
+                                                placeholder="Leave a Message :"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -223,8 +235,7 @@
             </div>
             <div class="row">
                 <div class="col-md-8 col-sm-12">
-                    <img src="{{ asset('client/images/maps/map-3.jpeg') }}" alt="Unit Status Indicators"
-                        class="img-fluid">
+                    <img src="{{ asset('client/images/maps/map-3.jpeg') }}" alt="Unit Status Indicators" class="img-fluid">
                 </div>
                 <div class="col-md-4 col-sm-12">
                     <h4>Unit Status Indicators</h4>
@@ -290,43 +301,23 @@
             </div><!--end col-->
         </div><!--end row-->
 
-        <div class="row">
-            <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
-                <div class="blog-post shadow rounded position-relative overflow-hidden">
-                    <div class="blog-img overflow-hidden position-relative">
-                        <img src="{{ asset('client/images/maps/medical.jpg') }}" class="img-fluid" alt="">
-                        <div class="overlay"></div>
-                        <div class="d-flex author-desc align-items-center">
-                            <img src="images/client/05.jpg" class="img-fluid avatar avatar-md-sm rounded-pill me-2 shadow"
-                                alt="">
+        <div class="row align-items-center">
+            @foreach ($reports as $report)
+                <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+                    <div class="popular-course rounded-md shadow position-relative overflow-hidden">
+                        <img src="{{ asset('client/images/maps/' . $report['image']) }}" class="img-fluid"
+                            alt="{{ $report['title'] }}">
+                        <div class="content p-3 text-center">
+                            <h5 class="mt-2"><a href="{{ route('blog.details', ['slug' => $report['slug']]) }}"
+                                    class="title text-dark">{{ $report['title'] }}</a></h5>
+                            <p class="text-muted">{{ date('d M, Y') }}</p>
                         </div>
                     </div>
-                    <div class="position-relative">
-                        <div class="shape overflow-hidden text-white">
-                            <svg viewBox="0 0 2880 250" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M720 125L2160 0H2880V250H0V125H720Z" fill="currentColor"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="blog-content p-4">
-                        <h5><a href="javascript:void(0)" class="title text-dark">LOG BASE 1 in Warri Supplies
-                                Increased</a>
-                        </h5>
+                </div><!--end col-->
+            @endforeach
 
-                        <div class="post-meta d-flex justify-content-between pt-3 border-top">
-                            <ul class="list-unstyled mb-0">
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="text-dark like me-2"><i
-                                            data-feather="heart" class="fea icon-sm like-icon me-1"></i>36</a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="text-dark comment"><i
-                                            data-feather="message-circle" class="fea icon-sm me-1"></i>08</a></li>
-                            </ul>
-                            <a href="javascript:void(0)" class="text-dark read">Read More <i
-                                    class="mdi mdi-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div><!--end post-->
-            </div><!--end col-->
         </div><!--end row-->
+
     </div><!--end container-->
 
 @endsection

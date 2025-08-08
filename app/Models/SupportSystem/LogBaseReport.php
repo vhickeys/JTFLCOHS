@@ -10,6 +10,7 @@ class LogBaseReport extends Model
 
     protected $fillable = [
         'log_base',
+        'reporting_officer',
         'ration_status',
         'pol_status',
         'ammunition_status',
