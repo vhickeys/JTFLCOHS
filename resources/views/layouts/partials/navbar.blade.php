@@ -27,36 +27,58 @@
 
         <div id="navigation">
             <!-- Navigation Menu-->
+            @php
+                // Routes that should NOT get "text-dark"
+                $noDarkRoutes = ['homepage', 'base.report', 'blog.details'];
+            @endphp
+
             <ul class="navigation-menu nav-light">
-                <li class="{{ request()->routeIs('homepage') ? 'active' : '' }}"><a href="{{ route('homepage') }}"
-                        class="sub-menu-item {{ request()->routeIs('homepage') ? '' : 'text-dark' }}">Home</a></li>
+                <li class="{{ request()->routeIs('homepage') ? 'active' : '' }}">
+                    <a href="{{ route('homepage') }}"
+                        class="sub-menu-item {{ request()->routeIs($noDarkRoutes) ? '' : 'text-dark' }}">
+                        Home
+                    </a>
+                </li>
 
                 @if (session('unit_logged_in'))
+                    <li class="{{ request()->routeIs('supply.management') ? 'active' : '' }}">
+                        <a href="{{ route('supply.management') }}"
+                            class="sub-menu-item {{ request()->routeIs($noDarkRoutes) ? '' : 'text-dark' }}">
+                            Supply Management
+                        </a>
+                    </li>
 
-                    <li class="{{ request()->routeIs('supply.management') ? 'active' : '' }}"><a
-                            href="{{ route('supply.management') }}"
-                            class="sub-menu-item {{ request()->routeIs('homepage') ? '' : 'text-dark' }}">Supply
-                            Management</a></li>
-
-                    <li class="{{ request()->routeIs('reports') ? 'active' : '' }}"><a href="{{ route('reports') }}"
-                            class="sub-menu-item {{ request()->routeIs('homepage') ? '' : 'text-dark' }}">Reports</a></li>
-
+                    <li class="{{ request()->routeIs('reports') ? 'active' : '' }}">
+                        <a href="{{ route('reports') }}"
+                            class="sub-menu-item {{ request()->routeIs($noDarkRoutes) ? '' : 'text-dark' }}">
+                            Reports
+                        </a>
+                    </li>
                 @endif
 
-                <li class="{{ request()->routeIs('training.resources') ? 'active' : '' }}"><a
-                        href="{{ route('training.resources') }}"
-                        class="sub-menu-item {{ request()->routeIs('homepage') ? '' : 'text-dark' }}">Training
-                        Resources</a></li>
+                <li class="{{ request()->routeIs('training.resources') ? 'active' : '' }}">
+                    <a href="{{ route('training.resources') }}"
+                        class="sub-menu-item {{ request()->routeIs($noDarkRoutes) ? '' : 'text-dark' }}">
+                        Training Resources
+                    </a>
+                </li>
 
-                <li class="{{ request()->routeIs('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}"
-                        class="sub-menu-item {{ request()->routeIs('homepage') ? '' : 'text-dark' }}">Contact</a></li>
+                <li class="{{ request()->routeIs('contact') ? 'active' : '' }}">
+                    <a href="{{ route('contact') }}"
+                        class="sub-menu-item {{ request()->routeIs($noDarkRoutes) ? '' : 'text-dark' }}">
+                        Contact
+                    </a>
+                </li>
 
                 @if (session('unit_logged_in'))
-                    <li class="active"><a href="{{ route('logout') }}" class="sub-menu-item">Logout
-                            ({{ session('unit_name') }})</a></li>
+                    <li class="active">
+                        <a href="{{ route('logout') }}" class="sub-menu-item">
+                            Logout ({{ session('unit_name') }})
+                        </a>
+                    </li>
                 @endif
-
             </ul>
+
             <!--end navigation menu-->
 
             {{-- <ul class="list-unstyled small-tagline d-none mb-0">
