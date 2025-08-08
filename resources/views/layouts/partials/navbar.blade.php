@@ -31,21 +31,24 @@
                 <li class="{{ request()->routeIs('homepage') ? 'active' : '' }}"><a href="{{ route('homepage') }}"
                         class="sub-menu-item {{ request()->routeIs('homepage') ? '' : 'text-dark' }}">Home</a></li>
 
-                <li class="{{ request()->routeIs('supply.management') ? 'active' : '' }}"><a
-                        href="{{ route('supply.management') }}"
-                        class="sub-menu-item {{ request()->routeIs('homepage') ? '' : 'text-dark' }}">Supply
-                        Management</a></li>
+                @if (session('unit_logged_in'))
 
-                <li class="{{ request()->routeIs('reports') ? 'active' : '' }}"><a href="{{ route('reports') }}"
-                        class="sub-menu-item {{ request()->routeIs('homepage') ? '' : 'text-dark' }}">Reports</a></li>
+                    <li class="{{ request()->routeIs('supply.management') ? 'active' : '' }}"><a
+                            href="{{ route('supply.management') }}"
+                            class="sub-menu-item {{ request()->routeIs('homepage') ? '' : 'text-dark' }}">Supply
+                            Management</a></li>
+
+                    <li class="{{ request()->routeIs('reports') ? 'active' : '' }}"><a href="{{ route('reports') }}"
+                            class="sub-menu-item {{ request()->routeIs('homepage') ? '' : 'text-dark' }}">Reports</a></li>
+
+                @endif
 
                 <li class="{{ request()->routeIs('training.resources') ? 'active' : '' }}"><a
                         href="{{ route('training.resources') }}"
                         class="sub-menu-item {{ request()->routeIs('homepage') ? '' : 'text-dark' }}">Training
                         Resources</a></li>
 
-                <li class="{{ request()->routeIs('contact') ? 'active' : '' }}"><a
-                        href="{{ route('contact') }}"
+                <li class="{{ request()->routeIs('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}"
                         class="sub-menu-item {{ request()->routeIs('homepage') ? '' : 'text-dark' }}">Contact</a></li>
 
                 @if (session('unit_logged_in'))

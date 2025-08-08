@@ -72,8 +72,8 @@ class SupportSytemController extends Controller
             case 'trsm':
                 return redirect()->route('trsm');
             default:
-                return redirect()->route('unit.login', ['model' => $model_name])
-                    ->with('status', ['Unknown model specified.']);
+                return redirect()->route('supply.management')
+                    ->with('status', ['Login Successfully.']);
         }
     }
 

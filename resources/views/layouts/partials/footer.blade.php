@@ -22,7 +22,8 @@
                             Homepage</a>
                     </li>
                     <li>
-                        <a href="{{ route('unit.login', ['model' => 'aufogem']) }}" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i>
+                        <a href="{{ route('unit.login', ['model' => 'aufogem']) }}" class="text-foot"><i
+                                class="mdi mdi-chevron-right me-1"></i>
                             About</a>
                     </li>
                     <li>
@@ -70,18 +71,24 @@
 <footer class="footer bg-footer footer-bar">
     <div class="container text-center">
         <div class="row align-items-center">
-            <div class="col-sm-12">
-                <div class="text-sm-start">
+            <div
+                class="col-sm-12 d-flex flex-column flex-md-row justify-content-between align-items-start">
+                <div class="text-md-start mb-2 mb-md-0">
                     <p class="mb-0">
                         ©
-                        <script>
-                            document.write(new Date().getFullYear());
-                        </script>
+                        <script>document.write(new Date().getFullYear());</script>
                         {{ config('app.name') }}. Built By
                         <a href="http://www.victor.jeapscarhire.ng" target="_blank" class="text-reset">Olvios Tech</a>.
                     </p>
                 </div>
+                <div class="text-md-end">
+                    <p class="mb-0">
+                        <a href="{{ route('unit.login') }}" target="_blank" class="text-reset"><strong>HQ
+                                Login</strong></a>.
+                    </p>
+                </div>
             </div>
+
             <!--end col-->
         </div>
         <!--end row-->

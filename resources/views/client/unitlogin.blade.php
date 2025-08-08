@@ -6,10 +6,11 @@
 
 
     <!-- Hero Start -->
-    <section class="vh-100 user-pages d-flex align-items-center" style="
-                                                                                        background: url('{{ asset('client/images/bg/login.jpg') }}') no-repeat center center fixed;
-                                                                                        background-size: cover;
-                                                                                      ">
+    <section class="vh-100 user-pages d-flex align-items-center"
+        style="
+background: url('{{ asset('client/images/bg/login.jpg') }}') no-repeat center center fixed;
+background-size: cover;
+">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-5 col-md-8 py-5">
@@ -26,7 +27,7 @@
                                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                             <strong>Whoops! Something went wrong:</strong>
 
-                                            @if(is_array(session('status')))
+                                            @if (is_array(session('status')))
                                                 <ul>
                                                     @foreach (session('status') as $message)
                                                         <li>{{ $message }}</li>
@@ -57,10 +58,10 @@
 
                                     <input type="hidden" value="{{ request()->query('model') }}" name="model">
                                     <div class="mb-3">
-                                        <label class="form-label">Your Unit Nomenclature <span
+                                        <label class="form-label">Your Command ID<span
                                                 class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="unit" value="{{ old('unit') }}"
-                                            placeholder="Your Your Unit Nomenclature" />
+                                        <input type="text" class="form-control" name="unit"
+                                            value="{{ old('unit') }}" placeholder="Enter Command ID" />
                                         @error('unit')
                                             <small class="text-danger">{{ $message }}*</small>
                                         @enderror
